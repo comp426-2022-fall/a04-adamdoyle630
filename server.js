@@ -12,11 +12,6 @@ const port = args.port || 5000;
 app.use(express.urlencoded({extended: true}))
 
 // Default endpoint
-app.get('*', (req, res) => {
-    res.status(404)
-    res.send("404 NOT FOUND")
-})
-
 app.get('/app', (req, res) => {
     res.status(200);
     res.send("Status code : 200 OK");
@@ -54,6 +49,12 @@ app.get('/app/roll/:sides/:dice/:/rolls/', (req, res) => {
     let rolls = parseInt(req.params.rolls)
     res.status(200)
     res.send(roll(sides, dice, rolls));
+})
+
+// Post 404 if no endpoint found
+app.get('*', (req, res) => {
+    res.status(404)
+    res.send("404 NOT FOUND")
 })
 
 app.listen(port, () => {
