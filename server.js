@@ -56,5 +56,6 @@ app.get('/app/roll/:sides/:dice/:/rolls/', (req, res) => {
     res.send(roll(sides, dice, rolls));
 })
 
-
-console.log(JSON.stringify(roll()))
+app.listen(port, () => {
+    console.log(`Server started on port ${port}\n`)
+});
